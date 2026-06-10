@@ -19,6 +19,7 @@ const QuoteElement = document.getElementById('Quote');
 const messageElement = document.getElementById('Message');
 const typedValueElement = document.getElementById('typed-value');
 const startButton = document.getElementById('start');
+const resetButton = document.getElementById('reset');
 
 
 
@@ -39,6 +40,7 @@ document.getElementById('start').addEventListener('click', () => {
 
   typedValueElement.value = ''; /*Clears Out Old typed-value aka The Text In The Input Box*/
   startButton.style.display = 'none'; /*Hides The Stat Button*/
+  resetButton.style.display = 'inline-block'; /*Shows The Reset Button*/
   startTime = new Date().getTime(); /*Start Timer For Calculating Word Per Minute Later*/
 });
 
@@ -55,6 +57,7 @@ typedValueElement.addEventListener('input', () => { /*For <input type="text"*/
     const message =`CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`; /*To Tell User Their Spent Time seconds*/
     messageElement.innerText = message; /*inserts The Time Score From message into The messageElement.innerText*/
     startButton.style.display = 'inline-block'; /*Shows The Start Button*/
+    resetButton.style.display = 'none';
   } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) { /*[Only Execute If The Currently Typed Text In The Word In Input Box Have a Space Bar At The End And The Cleaned Up Word Using The typedValue.trim() is Equal To The Current Word Using Index Number in wordindex*/
      typedValueElement.value = ''; /*Resets The Typed Word Inside The Input Box As Soon We Completed Typing The Word Correctly According To the Else If Statement*/
     wordIndex++;
@@ -73,3 +76,19 @@ typedValueElement.addEventListener('input', () => { /*For <input type="text"*/
         }
 });
 
+
+resetButton.addEventListener('click', () => {
+    // Clear out game state variables
+    words = [];
+    wordIndex = 0;
+    
+    // Clear out visual UI elements
+    QuoteElement.innerHTML = '';
+    messageElement.innerText = '';
+    typedValueElement.value = '';
+    typedValueElement.classList.remove('error');
+    
+    // BUTTON TOGGLE: Bring back Start button, hide Reset button
+    startButton.style.display = 'inline-block';
+    resetButton.style.display = 'none';
+});
