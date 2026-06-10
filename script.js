@@ -61,10 +61,12 @@ typedValueElement.addEventListener('input', () => { /*For <input type="text"*/
     }
     // highlight the new word
     QuoteElement.childNodes[wordIndex].className = 'highlight'; /*It Highlights The Current Word By Using The wordIndex To Tell Which Word To Highlight*/
-  } else if (currentWord.startsWith(typedValue)) { /*[Only Execute If The Currently Typed Word Start With a Space Bar]*/
-    typedValueElement.className = ''; /*Resets The Typed Words Class Name*/
-  } else {
-    typedValueElement.className = 'error'; /*[Only execute If There Is Error And It Assigns It With An error class So We Can Style The error Later]*/
-  }
+
+    } else if (currentWord.startsWith(typedValue)) { /*[Only Execute If The Currently Typed Word Start With a Space Bar]*/
+       typedValueElement.classList.remove('error'); /*Resets The Typed Words Class Name*/
+       
+    } else {
+         typedValueElement.classList.add('error'); /*[Only execute If There Is Error And It Assigns It With An error class So We Can Style The error Later]*/
+        }
 });
 

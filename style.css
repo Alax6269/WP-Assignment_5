@@ -10,16 +10,18 @@ h1{ /*For The Heading 1 Style*/
     margin-bottom: 80px;
     margin-top: 35px;
     font-family: 'Bold-Italic';
+    font-size: 60px; 
 }
 
 
 .Sub-Title{ /*For The Sub Title Text On Website*/
     color:white;
-    margin-bottom:70px;
+    font-size: 30px;
+    margin-bottom:150px;
     text-align:center;
     font-weight:bold;
     font-family:'Bold-Italic';
-    font-size: 15px;
+    font-size:25px;
 
 }
 
@@ -51,6 +53,9 @@ h1{ /*For The Heading 1 Style*/
     border-radius:5px;
     color:white;
     font-family: 'Bold-italic', sans-serif;
+    height:40px;
+    width: 100px;
+    font-size: 20px;
     
 }
 
@@ -59,13 +64,16 @@ h1{ /*For The Heading 1 Style*/
     color:rgb(6, 205, 255);
     text-align:center;
     margin-bottom: 30px;
+    font-size: 30px;
 
 }
 
 .Quote{ /*The Text On Top Of The input Box In The Game*/
 
     color:rgb(255, 255, 255);
+    font-size: 30px;
     margin-bottom: 50px;
+   
     font-weight: bold;
 }
 
@@ -76,7 +84,14 @@ h1{ /*For The Heading 1 Style*/
     color:rgb(251, 255, 0);
     font-weight: bold;
     font-family: 'Bold-Italic';
-    font-size: 15px;
+    font-size: 20px;
 }
 
 
+.Input-Box{ /*For The Text Input Box Style*/
+    width: 400px;
+    height: 40px;
+    font-size: 25px;
+    border-radius:5px;
+    
+}
