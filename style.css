@@ -1,0 +1,82 @@
+body{ /*For Page BAckground Color*/
+    background-color:rgb(0, 0, 0)
+}
+
+
+h1{ /*For The Heading 1 Style*/
+    color:rgb(238, 255, 0);
+    text-align:center;
+    font-weight:bold;
+    margin-bottom: 80px;
+    margin-top: 35px;
+    font-family: 'Bold-Italic';
+}
+
+
+.Sub-Title{ /*For The Sub Title Text On Website*/
+    color:white;
+    margin-bottom:70px;
+    text-align:center;
+    font-weight:bold;
+    font-family:'Bold-Italic';
+    font-size: 15px;
+
+}
+
+.highlight { /*Higlight ForThe Texts */
+  background-color: rgb(255, 0, 0);
+}
+
+
+@font-face{ /*Inporting Extenal Font type*/
+    font-family:'Bold-Italic'; /*Giving The Font Name*/
+    src: url('../Font/Bold-Italic.otf') format('opentype') /*Font source and Format aka .otf Format*/
+}
+
+.Milker-Font{
+    font-family:'Milker-Font', sans-serif; /*Uses the Milker-Font If No Web Errors But Opt To sans-serif If Got Any Web Issues*/
+
+}
+
+
+.error { /*Typing Erro Trigger Style*/
+  background-color: rgb(250, 167, 167);
+  border: rgb(255, 255, 255);
+}
+
+.StartButton{ /*For The Start Boutton Style*/
+
+    background-color:red;
+    padding: 2px 10px;
+    border-radius:5px;
+    color:white;
+    font-family: 'Bold-italic', sans-serif;
+    
+}
+
+
+.Message{ /*For The Game Completion Message Style*/
+    color:rgb(6, 205, 255);
+    text-align:center;
+    margin-bottom: 30px;
+
+}
+
+.Quote{ /*The Text On Top Of The input Box In The Game*/
+
+    color:rgb(255, 255, 255);
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+
+
+.Label{ /*For The Text To The Left Of The Input Box In Game*/
+
+    color:rgb(251, 255, 0);
+    font-weight: bold;
+    font-family: 'Bold-Italic';
+    font-size: 15px;
+}
+
+
