@@ -12,68 +12,64 @@ const quotes = [
 // store the list of words and the index of the word the player is currently typing
 let words = [];
 let wordIndex = 0;
-
-// Fixed: Standardized to lowercase 'startTime' to match your event listeners
-let startTime = Date.now(); 
-
+// the starting time
+let startTime = Date.now(); /*Timer*/
 // page elements
 const QuoteElement = document.getElementById('Quote');
 const messageElement = document.getElementById('Message');
 const typedValueElement = document.getElementById('typed-value');
-const startButton = document.getElementById('start'); // Added button selector
+const startButton = document.getElementById('start');
 
 
 
 /*(1)The Starting Logic*/
-startButton.addEventListener('click', () => {
-    /*To Get a Quote from quotes*/
-    const quoteIndex = Math.floor(Math.random() * quotes.length); 
+document.getElementById('start').addEventListener('click', () => {
+ /*To Get a Quote from quotes*/
+  const quoteIndex = Math.floor(Math.random() * quotes.length); /*Randomly Choose 1 Of The Quotes From quotes*/
 
-    const quote = quotes[quoteIndex]; 
-    words = quote.split(' '); 
-    wordIndex = 0; 
+  const quote = quotes[quoteIndex]; /*Only The Randomly Choosen Quote From quotes Will Be in quote*/
+  words = quote.split(' '); /*quote Are Seperated Into 1 individual Words In 1 Long Line*/
+  wordIndex = 0; /*Resets The wordIndex Value For Tracking*/
 
-    /*For UI updates*/
-    const spanWords = words.map(function(word) { return `<span>${word} </span>`}); 
-    QuoteElement.innerHTML = spanWords.join(''); 
-    QuoteElement.childNodes[0].className = 'highlight'; 
-    messageElement.innerText = ''; 
+  /*For UI updates*/
+  const spanWords = words.map(function(word) { return `<span>${word} </span>`}); /*Loops Through Every Words So We can Apply <span> Class To Each Words*/
+  QuoteElement.innerHTML = spanWords.join(''); /*Reformatting the QuoteElemnt Content By Adding Our New Edited Content Into <p id="Quote"></p> */
+  QuoteElement.childNodes[0].className = 'highlight'; /*Higlights The First Element In quote using <span>*/
+  messageElement.innerText = ''; /*Clears Out Old <p id="Message"></p>*/
 
-    typedValueElement.value = ''; 
-    
-    // HIDE BUTTON: Makes the start button disappear when clicked
-    startButton.style.display = 'none'; 
-    
-    startTime = new Date().getTime(); 
+  typedValueElement.value = ''; /*Clears Out Old typed-value aka The Text In The Input Box*/
+  startButton.style.display = 'none'; /*Hides The Stat Button*/
+  startTime = new Date().getTime(); /*Start Timer For Calculating Word Per Minute Later*/
 });
 
 
 /*(2)The Typing Logic*/
-typedValueElement.addEventListener('input', () => { 
-    const currentWord = words[wordIndex]; 
-    const typedValue = typedValueElement.value; 
+typedValueElement.addEventListener('input', () => { /*For <input type="text"*/
+  const currentWord = words[wordIndex]; /*Chooses The Current First Word in words*/
+  // get the current value
+  const typedValue = typedValueElement.value; /*Assigngs typedValue The Stuff That User Inputed Into typedValueElement By Typing Into The Input Box */
 
-    if (typedValue === currentWord && wordIndex === words.length - 1) { 
-        const elapsedTime = new Date().getTime() - startTime; 
-        const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`; 
-        messageElement.innerText = message; 
-        
-        // SHOW BUTTON: Brings the start button back so they can play again
-        startButton.style.display = 'inline-block'; 
-        
-    } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) { 
-        typedValueElement.value = ''; 
-        wordIndex++;
-        
-        for (const wordElement of QuoteElement.childNodes) {
-            wordElement.className = ''; 
-        }
-        QuoteElement.childNodes[wordIndex].className = 'highlight'; 
-
-    } else if (currentWord.startsWith(typedValue)) { 
-        typedValueElement.classList.remove('error'); 
-        
-    } else {
-        typedValueElement.classList.add('error'); 
+  if (typedValue === currentWord && wordIndex === words.length - 1) { /*[Only Execute if User Typed The Final Word Correctly While At The Final Word Of The quote]*/
+  
+    const elapsedTime = new Date().getTime() - startTime; /*Calculate Elapsed Time Using startTime*/
+    const message =`CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`; /*To Tell User Their Spent Time seconds*/
+    messageElement.innerText = message; /*inserts The Time Score From message into The messageElement.innerText*/
+    startButton.style.display = 'inline-block'; /*Shows The Start Button*/
+  } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) { /*[Only Execute If The Currently Typed Text In The Word In Input Box Have a Space Bar At The End And The Cleaned Up Word Using The typedValue.trim() is Equal To The Current Word Using Index Number in wordindex*/
+     typedValueElement.value = ''; /*Resets The Typed Word Inside The Input Box As Soon We Completed Typing The Word Correctly According To the Else If Statement*/
+    wordIndex++;
+    
+    for (const wordElement of QuoteElement.childNodes) {
+      wordElement.className = ''; /*Resets Class Name For All wordElement In quote In a Loop*/
     }
+    // highlight the new word
+    QuoteElement.childNodes[wordIndex].className = 'highlight'; /*It Highlights The Current Word By Using The wordIndex To Tell Which Word To Highlight*/
+
+    } else if (currentWord.startsWith(typedValue)) { /*[Only Execute If The Currently Typed Word Start With a Space Bar]*/
+       typedValueElement.classList.remove('error'); /*Resets The Typed Words Class Name*/
+
+    } else {
+         typedValueElement.classList.add('error'); /*[Only execute If There Is Error And It Assigns It With An error class So We Can Style The error Later]*/
+        }
 });
+
