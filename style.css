@@ -60,6 +60,19 @@ h1{ /*For The Heading 1 Style*/
 }
 
 
+.ResetButton { /*For Reset Button Style*/
+    background-color: rgb(80, 80, 80);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Bold-Italic', sans-serif;
+    height: 40px;
+    width: 100px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
 .Message{ /*For The Game Completion Message Style*/
     color:rgb(6, 205, 255);
     text-align:center;
